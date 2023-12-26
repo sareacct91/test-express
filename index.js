@@ -24,7 +24,7 @@ app.get('/retrieve-client-info', (req, res, next) => {
   const phoneNumber = req.query.phoneNumber;
   const email = req.query.email;
 
-  let matchedClient;
+  let matchedClient = [];
 
   // Loop through the clientDataArr
   for (const client of clientDataArr) {
@@ -33,13 +33,13 @@ app.get('/retrieve-client-info', (req, res, next) => {
       || client.phoneNumber === phoneNumber || client.email === email) {
       
       // Set matchedClient to the client object
-      matchedClient = client;
+      matchedClient.push(client);
+      console.log('Found matching client info', client);
     }
   }
   // If matchedClient was found, send back the data
   matchedClient ? res.send(matchedClient) : res.send("No matching client");
 });
-
 
 app.post('/update-client-info', (req, res, next) => {
   const jsonData = req.body;
@@ -57,8 +57,6 @@ app.post('/update-client-info', (req, res, next) => {
   clientDataArr.push(req.body);
   writeClientData(clientDataArr);
 });
-
-
 
 // start server
 app.listen(PORT, () => {
