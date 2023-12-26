@@ -7,6 +7,9 @@ document.getElementById('clientInputForm').addEventListener('submit', async (evt
   const clientInfo = getClientInfo();
   // console.log(clientInfo);
   
-  console.log(getData());
-  console.log(setData(clientInfo));
+  const serverData = getData();
+  const serverResponse = setData(clientInfo);
+
+  console.log(await serverData);
+  console.log(await serverResponse);
 });
