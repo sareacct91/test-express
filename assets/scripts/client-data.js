@@ -6,14 +6,17 @@ const { writeFile, readFileSync } = require("fs");
 */
 
 function readClientData () {
-  return readFileSync('../data/client-information.json', 'utf8', )
+  return readFileSync('./assets/data/client-information.json', 'utf8', (err, data) => {
+    err ? console.log(err) : console.log('Read SUCCESS!');
+  });
 }
 
 function writeClientData (clientDataArr) {
-  writeFile('../data/client-information.json', JSON.stringify(clientDataArr), err => err ? console.log(err) : console.log('Client data SAVED!'));
+  writeFile('./assets/data/client-information.json', JSON.stringify(clientDataArr), err => err ? console.log(err) : console.log('Client data SAVED!'));
 };
 
 let clientDataArr = readClientData() || [];
+console.log(clientDataArr);
 
 module.exports = {
   clientDataArr,

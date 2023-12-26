@@ -20,6 +20,7 @@ app.post('/update-client-info', (req, res) => {
   writeClientData(clientDataArr);
 });
 
+
 // start server
 app.listen(PORT, () => {
   console.log(`Server is running in port: ${PORT}`);
