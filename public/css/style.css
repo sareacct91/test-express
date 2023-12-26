@@ -1,4 +1,35 @@
+
+/* Utils */
+.wrapper {
+  width: 90%;
+  margin: auto;
+}
+.container {
+  width: 100%;
+}
+.row {
+  display: flex;
+}
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
 body {
   background-color: black;
   color: white;
+}
+
+header {
+  background-color: blue;
+}
+
+/* ID */
+#clientInputAside {
+  border: 2px solid greenyellow;
+}
+
+#mainDisplay {
+  border: 2px solid red;
+  
 }
