@@ -1,15 +1,18 @@
-import { getClientInfo } from "./client-input.js";
+import { getClientInfo, searchClientInfo } from "./client-IO.js";
 import { getData, setData } from "./networking.js";
 
 document.getElementById('clientInputForm').addEventListener('submit', async (evt) => {
   evt.preventDefault();
   
   const clientInfo = getClientInfo();
-  // console.log(clientInfo);
-  
-  // const serverData = getData();
   const serverResponse = setData(clientInfo);
-
-  // console.log(await serverData);
   console.log(await serverResponse);
+});
+
+document.getElementById('clientSearchForm').addEventListener('submit', async (evt) => {
+  evt.preventDefault();
+
+  const searchInfo = searchClientInfo();
+  const serverData = getData(searchInfo);
+  console.log(await serverData);
 });
