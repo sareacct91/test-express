@@ -10,15 +10,24 @@ app.use(express.static('public'));
 app.use(express.json());
 
 // Route handling
-app.post('/update-client-info', (req, res) => {
+app.post('/update-client-info', (req, res, next) => {
   const jsonData = req.body;
 
-  !jsonData.firstName || !jsonData.lastName
-    ? res.send({ message: 'Incomplete client data: Please try again!' })
-    : clientDataArr.push(jsonData);
+  if (!jsonData.firstName || !jsonData.lastName) {
+    res.send({ message: 'Incomplete client data: Please try again!' })
   
+  } else {
+    res.send({ message: "Client data RECEIVED!" });
+    console.log(jsonData);
+    next();
+  }
+
+}, (req, res, next) => {
+  clientDataArr.push(req.body);
   writeClientData(clientDataArr);
+  console.log(clientDataArr);
 });
+
 
 
 // start server
