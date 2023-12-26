@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(cors());
 
 // GET
-app.get('/GET-command', cors(), (req, res) => {
+app.get('/GET-command', (req, res) => {
   res.send({ message: 'Take this string!' });
 });
 
