@@ -10,6 +10,37 @@ app.use(express.static('public'));
 app.use(express.json());
 
 // Route handling
+app.get('/retrieve-client-info', (req, res, next) => {
+  if (req.query) {
+    next();
+  } else {
+    res.send({ message: "Please send the information of the client you're looking for!" });
+  }
+
+}, (req, res, next) => {
+  // Get the data from the queryParameters
+  const firstName = req.query.firstName;
+  const lastName = req.query.lastName;
+  const phoneNumber = req.query.phoneNumber;
+  const email = req.query.email;
+
+  let matchedClient;
+
+  // Loop through the clientDataArr
+  for (const client of clientDataArr) {
+    // if first and last name matched, or phone number matched, or email matched
+    if ((client.firstName === firstName && client.lastName === lastName)
+      || client.phoneNumber === phoneNumber || client.email === email) {
+      
+      // Set matchedClient to the client object
+      matchedClient = client;
+    }
+  }
+  // If matchedClient was found, send back the data
+  matchedClient ? res.send(matchedClient) : res.send("No matching client");
+});
+
+
 app.post('/update-client-info', (req, res, next) => {
   const jsonData = req.body;
 
@@ -25,7 +56,6 @@ app.post('/update-client-info', (req, res, next) => {
 }, (req, res, next) => {
   clientDataArr.push(req.body);
   writeClientData(clientDataArr);
-  console.log(clientDataArr);
 });
 
 

@@ -15,6 +15,7 @@ function writeClientData (clientDataArr) {
   writeFile('./assets/data/client-information.json', JSON.stringify(clientDataArr), err => err ? console.log(err) : console.log('Client data SAVED!'));
 };
 
+
 let clientDataArr = readClientData() || [];
 console.log(clientDataArr);
 
