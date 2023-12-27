@@ -4,13 +4,56 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/style.css" />
 
-    <title>Document</title>
+    <title>Basic Client Data</title>
   </head>
   <body>
+    <header>
+      <h1>Basic Client Data</h1>
+    </header>
 
+    <main class="wrapper row">
+      <aside id="clientInputAside" class="col gap-2">
+        <section>
+          <h2>Enter client information here: </h2>
+          <form id="clientInputForm" class="col">
+            <label for="clientFirstNameInput">Enter first name: </label>
+            <input type="text" id="clientFirstNameInput">
+            <label for="clientLastNameInput">Enter first name: </label>
+            <input type="text" id="clientLastNameInput">
+            <label for="clientPhoneNumberInput">Enter Phone number: </label>
+            <input type="text" id="clientPhoneNumberInput">
+            <label for="clientAddressInput">Enter Address: </label>
+            <input type="text" id="clientAddressInput">
+            <label for="clientEmailInput">Enter Email: </label>
+            <input type="text" id="clientEmailInput">
+            <button type="submit" id="submitBtn">Submit</button>
+          </form>
+        </section>
+
+        <section>
+          <h2>Search for client information: </h2>
+          <form id="clientSearchForm" class="col">
+            <label for="clientFirstNameSearch">Enter first name: </label>
+            <input type="text" id="clientFirstNameSearch">
+            <label for="clientLastNameSearch">Enter first name: </label>
+            <input type="text" id="clientLastNameSearch">
+            <label for="clientPhoneNumberSearch">Enter Phone number: </label>
+            <input type="text" id="clientPhoneNumberSearch">
+            <label for="clientEmailSearch">Enter Email: </label>
+            <input type="text" id="clientEmailSearch">
+            <button type="submit" id="searchBtn">Search</button>
+          </form>
+        </section>
+      </aside>
+
+      <section id="mainDisplay" class="container col">
+
+      </section>
+    </main>
     
-    <script src="./assets/js/script.js"></script>
+    <script type="module" src="./js/script.js"></script>
   </body>
 </html>
