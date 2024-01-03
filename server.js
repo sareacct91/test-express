@@ -7,9 +7,6 @@ const app = express();
 // ConnectDB
 const connectDB = require("./db/connect");
 
-// Routers
-const mainRouters = require("./routes/mainRoute");
-
 // Middlewares
 const logger = require("./middlewares/logger");
 
@@ -17,8 +14,18 @@ app.use(express.static("./public"));
 app.use(logger);
 app.use(express.json());
 
+
 // Routes
+const mainRouters = require("./routes/mainRoute");
 app.use("/", mainRouters);
+
+
+
+
+// Error Handler MW
+const errorHandlerMW = require('./middlewares/errorHandlerMW');
+app.use(errorHandlerMW);
+
 
 // Live
 const PORT = process.env.PORT || 5001;
