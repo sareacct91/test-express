@@ -1,5 +1,5 @@
 const { StatusCodes } = require('http-status-codes');
-const { NotFoundError, UnauthenticatedError, BadRequestError } = require('../errors');
+const { UnauthenticatedError, BadRequestError } = require('../errors');
 const UsersSchema = require('../models/UsersModel');
 
 const userRegister = async (req, res) => {
@@ -29,7 +29,7 @@ const userUpdateInfo = async (req, res) => {
   const { email, password } = req.body;
 
   if (!userId) {
-    throw new BadRequestError('Please provide an id');
+    throw new BadRequestError('Invalid Credentials');
   }
 
   const user = await UsersSchema.findOneAndUpdate(
