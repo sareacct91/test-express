@@ -20,9 +20,18 @@ const UsersSchema = mongoose.Schema(
   { timestamps: true },
 );
 
+
 UsersSchema.pre('save', async function () {
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
+});
+
+UsersSchema.pre('findOneAndUpdate', async function () {
+  const data = this.getUpdate();
+  if (data.password) {
+    const salt = await bcrypt.genSalt(10);
+    data.password = await bcrypt.hash(data.password, salt);
+  }
 });
 
 UsersSchema.methods.createJWT = function () {
